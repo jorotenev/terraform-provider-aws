@@ -1,27 +1,33 @@
 variable "aws_region" {
   description = "The AWS region to create things in."
-  default     = "us-east-1"
+  default     = "eu-west-1"
 }
 
 # ubuntu-trusty-14.04 (x64)
 variable "aws_amis" {
   default = {
-    "us-east-1" = "ami-5f709f34"
+    "eu-west-1" = "ami-03ef731cc103c9f09"
     "us-west-2" = "ami-7f675e4f"
   }
 }
 
 variable "availability_zones" {
-  default     = "us-east-1b,us-east-1c,us-east-1d,us-east-1e"
+  default     = ["eu-west-1a","eu-west-1b","eu-west-1c"]
+  description = "List of availability zones, use AWS CLI to find your "
+}
+
+variable "subnets" {
+  default     = ["subnet-021a5b64", "subnet-5faafb17", "subnet-8a59dad0"]
   description = "List of availability zones, use AWS CLI to find your "
 }
 
 variable "key_name" {
   description = "Name of AWS key pair"
+  default = "aws2019-new"
 }
 
 variable "instance_type" {
-  default     = "t2.micro"
+  default     = "t3.micro"
   description = "AWS instance type"
 }
 
